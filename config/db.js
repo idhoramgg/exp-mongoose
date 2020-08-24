@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const url= "mongodb+srv://root:Password123@impactbyte.pdsr8.mongodb.net/impactbyte";
+const url= "mongodb://localhost:27017/impactbyte";
 // const database = "impactbyte";
 
 mongoose.connect(url, {
