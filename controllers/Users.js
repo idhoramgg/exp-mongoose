@@ -1,9 +1,8 @@
-const User = require('../Models/Users');
+const Users = require('../Models/Users');
 
 module.exports = {
     getAllData : (req, res) => {
-        User.find()
-        .populate('address', "-_id")
+        Users.find()
         .then(result => {
             res.send({
                 message: 'get All data',
@@ -18,12 +17,13 @@ module.exports = {
         })
     },
     addOne: (req, res) => {
-        const {name, email, password, phoneNumber } = req.body
-        User.create({
-            name,
+        const {fullname, username, email, password, address } = req.body
+        Users.create({
+            fullname,
+            username,
             email,
             password,
-            phoneNumber
+            address
         }, (error, result) => {
             if(error){
                 res.send({
@@ -32,7 +32,8 @@ module.exports = {
             }
             else {
                 res.send({
-                    message: result
+                    message: "success add user", 
+                    result
                 })
             }
         })

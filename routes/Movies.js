@@ -4,9 +4,9 @@ const route = express.Router();
 const {
     getAllData,
     addOne
-} = require('../controllers/Address')
+} = require('../controllers/Movies')
 
-route.get('/address', getAllData)
-route.post('/address', addOne)
+route.get('/movies', getAllData)
+route.post('/movies', addOne)
 
 module.exports = route
