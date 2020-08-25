@@ -8,13 +8,22 @@ module.exports = {
             .populate({ path: 'id_movie', select: 'title url_trailer'})
             .populate({ path:'id_subscriptions', select: '_id'})
           
-            res.send({
-                message: 'test',
-                data: history
-            })
+            if(history){
+                res.send({
+                    message: 'get all data',
+                    data: history
+                })
+            } else {
+                res.status(400).json({
+                    message: 'failed to get data'
+                })
+            }
         }
         catch(error) {
             console.log(error);
+            res.status(500).json({
+                message: "Internal Server Error"
+            })
         }
     },
     createOne: async (req, res) => {
